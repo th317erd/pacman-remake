@@ -1,9 +1,8 @@
 # pacman-remake
 Remake Pacman as part of the KingTut classes
 
-
-# i want to learn how to code becuase
-1. becuase i want to lord it over people.
-2. i enjoy anything pc related.
-3. becuase i can....
-4. becuase the movie hackers lied to me. 
+# I want to learn how to code because
+1. Because code is awesome!
+2. Because I can make coool shiieeeet!
+3. Because why the fuck not?
+4. BECAUSE REASONS!
