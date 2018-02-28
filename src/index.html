@@ -1,10 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pacman</title>
-  </head>
+    <head>
+        <title>Pacman</title>
 
-  <body>
-    Hello Pacman!
-  </body>
-</html>
+        <style>
+            html, 
+            body {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                border: 0;
+            }
+            .retro-bg{ 
+                background-repeat:no-repeat;
+                background-color:black;
+                background-size:1000px auto;
+                background-image:url('http://efekt-dieta.info/cdn/images/pacman-background/pacman-background-11.jpg');
+            }
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box; 
+                border: 0;
+            }
+            #pacman{
+                position: absolute;
+                left: 0;
+                right: 40px;
+                top: 110px;
+                margin: auto;
+            }
+            #pink-ghost{
+                left: 40px;
+                top: 40px;
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body class="retro-bg">
+        <h1 style="color:white;text-align:center;">Hello Pacman!</h1>
+        <img id="pacman" class="pacman" width="40" height="40" src="../assets/images/pacman.svg"/>
+        <img id="pink-ghost" class="ghost pink"  width="40" height="40" src="http://www.pngmart.com/files/2/Pac-Man-Ghost-PNG-Transparent-Image.png"/>
+    
+        <script type="text/javascript">
+            var pacmanElement = document.getElementById('pacman');
+            if (!pacmanElement)
+                throw new Error('cant find');
+            
+            var x = 0,
+                y = 0;
+
+            document.addEventListener('keydown', (event) => {
+                if (event.code === 'ArrowLeft'){
+                    x = x - 10;
+                    pacmanElement.style.left = x + 'px';      
+                } else if (event.code === 'ArrowRight'){
+                    x = x + 10;
+                    pacmanElement.style.left = x + 'px'; 
+                } else if (event.code === 'ArrowUp'){
+                    y = y - 10;
+                    pacmanElement.style.top = y + 'px';  
+                } else if (event.code === 'ArrowDown'){
+                    y = y + 10;
+                    pacmanElement.style.top = y + 'px';
+                }
+            }, true)
+
+        </script>
+    </body>
+</html> 
