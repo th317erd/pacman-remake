@@ -2,9 +2,59 @@
 <html>
   <head>
     <title>Pacman</title>
+
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        box-sizing: 0;
+        border: 0;
+        background-color: black;
+        font-size: 10px;
+        color: white;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: 0;
+        border: 0;
+      }
+
+      #pacman {
+        position: absolute;
+      }
+    </style>
   </head>
 
   <body>
-    Hello Pacman!
+    <img id="pacman" src="../assets/images/pacman.svg">
+
+    <script type="text/javascript">
+      var pacmanElement = document.getElementById('pacman');
+      if (!pacmanElement)
+        throw new Error('CAN NOT FIND THE SHIT!');
+
+      var x = 0,
+          y = 0;
+
+      document.addEventListener('keydown', (event) => {
+        if (event.code === 'ArrowLeft') {
+          x = x - 10;
+          pacmanElement.style.left = x + 'px';
+        } else if (event.code === 'ArrowRight') {
+          x = x + 10;
+          pacmanElement.style.left = x + 'px';
+        } else if (event.code === 'ArrowUp') {
+          y = y - 10;
+          pacmanElement.style.top = y + 'px';
+        } else if (event.code === 'ArrowDown') {
+          y = y + 10;
+          pacmanElement.style.top = y + 'px';
+        }
+      }, true);
+    </script>
   </body>
 </html>
