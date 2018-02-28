@@ -1,22 +1,21 @@
-body {
-  max-width: 1400px;
+html, body {
   width: 100%;
-  margin: 0 auto;
-  display: block;
-  background-color: aliceblue;
-}
-
-.main {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+  border: 0;
   background-color: black;
+  font-size: 10px;
 }
 
-h1 {
-  color: white;
-  text-align: center;
-  text-decoration: underline;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+  border: 0;
 }
 
-img {
-  width: 100px;
-  height: 100px;
+#pacman {
+  position: absolute;
 }

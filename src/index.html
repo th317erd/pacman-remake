@@ -2,13 +2,35 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css">
+
     <title>Pacman</title>
   </head>
-
   <body>
-    <div class="main">
-      <h1>Hello Pacman!</h1>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pacman.svg/542px-Pacman.svg.png" alt="Pac Man">
-    </div>
+      <img id="pacman" src="../assets/images/Pacman.svg" alt="Pac Man">
+
+      <script type="text/javascript">
+        var pacmanElement = document.getElementById('pacman');
+        if (!pacmanElement)
+          throw new Error('CAN NOT FIND THE SHIT!');
+
+        var x = 0,
+            y = 0;
+
+        document.addEventListener('keydown', (event) => {
+          if (event.code === 'ArrowLeft') {
+            x -= 10;
+            pacmanElement.style.left = x + 'px';
+          } else if (event.code === 'ArrowRight') {
+            x += 10;
+            pacmanElement.style.left = x + 'px';
+          } else if (event.code === 'ArrowUp') {
+            y -= 10;
+            pacmanElement.style.top = y + 'px';
+          } else if (event.code === 'ArrowDown') {
+            y += 10;
+            pacmanElement.style.top = y + 'px';
+          }
+        }, true)
+      </script>
   </body>
 </html>
