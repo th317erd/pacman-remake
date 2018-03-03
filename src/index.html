@@ -2,35 +2,58 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css">
-
     <title>Pacman</title>
   </head>
   <body>
       <img id="pacman" src="../assets/images/Pacman.svg" alt="Pac Man">
 
       <script type="text/javascript">
+        function mainLoop() {
+          window.requestAnimationFrame(mainLoop);
+
+          if (directionX) {
+            x = x + directionX;
+          } else {
+            y = y + directionY;
+          }
+
+          pacmanElement.style.left = x + 'px';
+          pacmanElement.style.top = y + 'px';
+        }
+
         var pacmanElement = document.getElementById('pacman');
         if (!pacmanElement)
           throw new Error('CAN NOT FIND THE SHIT!');
 
         var x = 0,
             y = 0;
+            directionX = 0;
+            directionY = 0;
 
         document.addEventListener('keydown', (event) => {
-          if (event.code === 'ArrowLeft') {
-            x -= 10;
-            pacmanElement.style.left = x + 'px';
+          if (event.code === 'Space') {
+            directionX = 0;
+            directionY = 0;
+          } else if (event.code === 'ArrowLeft') {
+            directionX = -1;
+            directionY = 0;
+            pacmanElement.classList = 'direction-left';
           } else if (event.code === 'ArrowRight') {
-            x += 10;
-            pacmanElement.style.left = x + 'px';
+            directionX = 1;
+            directionY = 0;
+            pacmanElement.classList = 'direction-right';
           } else if (event.code === 'ArrowUp') {
-            y -= 10;
-            pacmanElement.style.top = y + 'px';
+            directionY = -1;
+            directionX = 0;
+            pacmanElement.classList = 'direction-up';
           } else if (event.code === 'ArrowDown') {
-            y += 10;
-            pacmanElement.style.top = y + 'px';
+            directionY = 1;
+            directionX = 0;
+            pacmanElement.classList = 'direction-down';
           }
         }, true)
+
+        window.requestAnimationFrame(mainLoop);
       </script>
   </body>
 </html>

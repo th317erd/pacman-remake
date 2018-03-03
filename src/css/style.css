@@ -7,6 +7,7 @@ html, body {
   border: 0;
   background-color: black;
   font-size: 10px;
+  overflow: hidden;
 }
 
 * {
@@ -18,4 +19,19 @@ html, body {
 
 #pacman {
   position: absolute;
+  width: 2rem;
+  height: 2rem;
+}
+
+.direction-left {
+  transform: rotate(180deg);
+}
+.direction-right {
+  transform: rotate(0deg);
+}
+.direction-up {
+  transform: rotate(-90deg);
+}
+.direction-down {
+  transform: rotate(90deg);
 }
