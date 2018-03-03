@@ -12,6 +12,8 @@
                 margin: 0;
                 box-sizing: border-box;
                 border: 0;
+                overflow:hidden;
+                font-size:11px;
             }
             .retro-bg{ 
                 background-repeat:no-repeat;
@@ -30,7 +32,29 @@
                 left: 0;
                 right: 40px;
                 top: 110px;
+                height:3rem;
+                width:3rem;
                 margin: auto;
+            }
+            .direction-left{
+                -ms-transform: rotate(-180deg);
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg); 
+            }
+            .direction-right{
+                -ms-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            .direction-up{
+                -ms-transform: rotate(-90deg);
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            .direction-down{
+                -ms-transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
             }
             #pink-ghost{
                 left: 40px;
@@ -41,33 +65,54 @@
     </head>
 
     <body class="retro-bg">
-        <h1 style="color:white;text-align:center;">Hello Pacman!</h1>
-        <img id="pacman" class="pacman" width="40" height="40" src="../assets/images/pacman.svg"/>
+        <img id="pacman" class="direction-left pacman" width="40" height="40" src="../assets/images/pacman.svg"/>
         <img id="pink-ghost" class="ghost pink"  width="40" height="40" src="http://www.pngmart.com/files/2/Pac-Man-Ghost-PNG-Transparent-Image.png"/>
     
         <script type="text/javascript">
+           // ANIMATION LOOP
+            function mainLoop() {
+                window.requestAnimationFrame(mainLoop);
+
+                x = x + directionX;
+                y = y + directionY;
+            
+                pacmanElement.style.left = x + 'px';
+                pacmanElement.style.top = y + 'px';
+            }
+
+            // CHECK FOR PACMAN
             var pacmanElement = document.getElementById('pacman');
             if (!pacmanElement)
                 throw new Error('cant find');
             
+            // MOVEMENT VARIABLES
             var x = 0,
-                y = 0;
-
+                y = 0,
+                directionX = 0,
+                directionY = 0;
+                
+            // KEYBOARD EVENT LISTENERS
             document.addEventListener('keydown', (event) => {
                 if (event.code === 'ArrowLeft'){
-                    x = x - 10;
-                    pacmanElement.style.left = x + 'px';      
+                    directionX = -10;
+                    directionY = 0;
+                    pacmanElement.classList = 'direction-left';
                 } else if (event.code === 'ArrowRight'){
-                    x = x + 10;
-                    pacmanElement.style.left = x + 'px'; 
+                    directionX = +10;
+                    directionY = 0;
+                    pacmanElement.classList = 'direction-right';
                 } else if (event.code === 'ArrowUp'){
-                    y = y - 10;
-                    pacmanElement.style.top = y + 'px';  
+                    directionY = -10;
+                    directionX = 0;
+                    pacmanElement.classList = 'direction-up';
                 } else if (event.code === 'ArrowDown'){
-                    y = y + 10;
-                    pacmanElement.style.top = y + 'px';
+                    directionY = +10;
+                    directionX = 0;
+                    pacmanElement.classList = 'direction-down';
                 }
             }, true)
+
+            window.requestAnimationFrame(mainLoop);
 
         </script>
     </body>
