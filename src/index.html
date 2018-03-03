@@ -14,6 +14,7 @@
         background-color: black;
         font-size: 10px;
         color: white;
+        overflow: hidden;
       }
 
       * {
@@ -24,7 +25,25 @@
       }
 
       #pacman {
+        width: 3rem;
+        height: 3rem;
         position: absolute;
+      }
+
+      .direction-left {
+        transform: rotate(180deg);
+      }
+
+      .direction-right {
+        transform: rotate(0deg);
+      }
+
+      .direction-up {
+        transform: rotate(-90deg);
+      }
+
+      .direction-down {
+        transform: rotate(90deg);
       }
     </style>
   </head>
@@ -53,14 +72,30 @@
           directionY = 0;
 
       document.addEventListener('keydown', (event) => {
-        if (event.code === 'ArrowLeft') {
+        if (event.code === 'Space') {
+          // Stop Pacman
+          directionX = 0;
+          directionY = 0;
+        } else if (event.code === 'ArrowLeft') {
+          // Tell Pacman to go left
           directionX = -1;
+          directionY = 0;
+          pacmanElement.classList = 'direction-left';
         } else if (event.code === 'ArrowRight') {
+          // Tell Pacman to go right
           directionX = 1;
+          directionY = 0;
+          pacmanElement.classList = 'direction-right';
         } else if (event.code === 'ArrowUp') {
+          // Tell Pacman to go up
           directionY = -1;
+          directionX = 0;
+          pacmanElement.classList = 'direction-up';
         } else if (event.code === 'ArrowDown') {
+          // Tell Pacman to go down
           directionY = 1;
+          directionX = 0;
+          pacmanElement.classList = 'direction-down';
         }
       }, true);
 
