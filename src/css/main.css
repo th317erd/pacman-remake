@@ -35,3 +35,9 @@ html, body {
 .direction-down {
   transform: rotate(90deg);
 }
+
+#constraints {
+  height: 400px;
+  width: 500px;
+  border: 1px solid pink;
+}
