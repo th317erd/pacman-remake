@@ -21,7 +21,7 @@ body {
     box-sizing: border-box; 
     border: 0;
 }
-#pacman{
+.pacman{
     position: absolute;
     left: 0;
     right: 40px;

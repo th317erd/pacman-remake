@@ -1,46 +1,97 @@
+// Anonymous function to avoid pollution of the global scope
+(function(){ 
 
-(function(){
     // ANIMATION LOOP
     function mainLoop() {
         window.requestAnimationFrame(mainLoop);
-
-        x = x + directionX;
-        y = y + directionY;
-
-        pacmanElement.style.left = x + 'px';
-        pacmanElement.style.top = y + 'px';
+        
+        // 
+        for (var index = 0; index < players.length; index++){
+            var player = players[index];
+            
+            // 
+            player.x += player.directionX;
+            player.y += player.directionY;
+            
+            // 
+            player.element.style.left = player.x + 'px';
+            player.element.style.top = player.y + 'px';
+        }
     }
 
-    // CHECK FOR PACMAN
-    var pacmanElement = document.getElementById('pacman');
-    if (!pacmanElement)
-        throw new Error('cant find');
+    // GAME VARIABLES
+    var windowWidth = window.innerWidth,
+        windowHeight = window.innerHeight,
+        players = [];
 
-    // MOVEMENT VARIABLES
-    var x = 0,
-        y = 0,
-        directionX = 0,
-        directionY = 0;
+    for (var amount = 0; amount < 10; amount++){
+
+        // create pacman "player"
+        var pacmanElement = document.createElement('img');
+            pacmanElement.setAttribute('src', 'assets/images/pacman.svg');
+            pacmanElement.classList = 'pacman';
+            document.body.appendChild(pacmanElement);
         
+        // define player objects
+        players.push({ 
+            element: pacmanElement,  
+            x: windowWidth * Math.random(),
+            y: windowHeight * Math.random(),
+            directionX: 0,
+            directionY: 0
+        });
+    }
+
     // KEYBOARD EVENT LISTENERS
     document.addEventListener('keydown', (event) => {
-        if (event.code === 'ArrowLeft'){
-            directionX = -10;
-            directionY = 0;
-            pacmanElement.classList = 'direction-left';
+        
+        var player1 = players[0];
+        var player2 = players[1];
+
+        //pacman1
+        if (event.code === 'Space'){
+            player1.directionX = 0;
+            player1.directionY = 0;
+        } else if (event.code === 'ArrowLeft'){
+            player1.directionX = -1;
+            player1.directionY = 0;
+            player1.element.classList = 'pacman direction-left';
         } else if (event.code === 'ArrowRight'){
-            directionX = +10;
-            directionY = 0;
-            pacmanElement.classList = 'direction-right';
+            player1.directionX = +1;
+            player1.directionY = 0;
+            player1.element.classList = 'pacman direction-right';
         } else if (event.code === 'ArrowUp'){
-            directionY = -10;
-            directionX = 0;
-            pacmanElement.classList = 'direction-up';
+            player1.directionY = -1;
+            player1.directionX = 0;
+            player1.element.classList = 'pacman direction-up';
         } else if (event.code === 'ArrowDown'){
-            directionY = +10;
-            directionX = 0;
-            pacmanElement.classList = 'direction-down';
+            player1.directionY = +1;
+            player1.directionX = 0;
+            player1.element.classList = 'pacman direction-down';
         }
+
+         //pacman2
+         if (event.code === 'KeyQ'){
+            player2.directionX = 0;
+            player2.directionY = 0;
+        } else if (event.code === 'KeyA'){
+            player2.directionX = -1;
+            player2.directionY = 0;
+            player2.element.classList = 'pacman direction-left';
+        } else if (event.code === 'KeyD'){
+            player2.directionX = +1;
+            player2.directionY = 0;
+            player2.element.classList = 'pacman direction-right';
+        } else if (event.code === 'KeyW'){
+            player2.directionY = -1;
+            player2.directionX = 0;
+            player2.element.classList = 'pacman direction-up';
+        } else if (event.code === 'KeyS'){
+            player2.directionY = +1;
+            player2.directionX = 0;
+            player2.element.classList = 'pacman direction-down';
+        }
+
     }, true)
 
     window.requestAnimationFrame(mainLoop);
