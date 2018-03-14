@@ -2,47 +2,90 @@
   function mainLoop() {
     window.requestAnimationFrame(mainLoop);
 
-    x = x + directionX;
-    y = y + directionY;
+    for (var index = 0; index < players.length; index++) {
+      var player = players[index];
 
-    pacmanElement.style.left = x + 'px';
-    pacmanElement.style.top = y + 'px';
+      player.x += player.directionX;
+      player.y += player.directionY;
+
+      player.element.style.left = player.x + 'px';
+      player.element.style.top = player.y + 'px';
+    }
   }
 
-  var pacmanElement = document.getElementById('pacman');
-  if (!pacmanElement)
-    throw new Error('CAN NOT FIND THE SHIT!');
+  var windowWidth = window.innerWidth,
+      windowHeight = window.innerHeight,
+      players = [];
 
-  var x = 0,
-      y = 0,
-      directionX = 0,
-      directionY = 0;
+  for (var amount = 0; amount < 150; amount++) {
+    var pacmanElement = document.createElement('img');
+    pacmanElement.setAttribute('src', 'assets/images/pacman.svg');
+    pacmanElement.classList = 'player';
+    document.body.appendChild(pacmanElement);
+
+    players.push({
+      element: pacmanElement,
+      x: windowWidth * Math.random(),
+      y: windowHeight * Math.random(),
+      directionX: 0,
+      directionY: 0
+    });
+  }
 
   document.addEventListener('keydown', (event) => {
+    var player1 = players[0];
+
     if (event.code === 'Space') {
       // Stop Pacman
-      directionX = 0;
-      directionY = 0;
+      player1.directionX = 0;
+      player1.directionY = 0;
     } else if (event.code === 'ArrowLeft') {
       // Tell Pacman to go left
-      directionX = -1;
-      directionY = 0;
-      pacmanElement.classList = 'direction-left';
+      player1.directionX = -1;
+      player1.directionY = 0;
+      player1.element.classList = 'player direction-left';
     } else if (event.code === 'ArrowRight') {
       // Tell Pacman to go right
-      directionX = 1;
-      directionY = 0;
-      pacmanElement.classList = 'direction-right';
+      player1.directionX = 1;
+      player1.directionY = 0;
+      player1.element.classList = 'player direction-right';
     } else if (event.code === 'ArrowUp') {
       // Tell Pacman to go up
-      directionY = -1;
-      directionX = 0;
-      pacmanElement.classList = 'direction-up';
+      player1.directionY = -1;
+      player1.directionX = 0;
+      player1.element.classList = 'player direction-up';
     } else if (event.code === 'ArrowDown') {
       // Tell Pacman to go down
-      directionY = 1;
-      directionX = 0;
-      pacmanElement.classList = 'direction-down';
+      player1.directionY = 1;
+      player1.directionX = 0;
+      player1.element.classList = 'player direction-down';
+    }
+
+    var player2 = players[1];
+    if (event.code === 'KeyQ') {
+      // Stop Pacman
+      player2.directionX = 0;
+      player2.directionY = 0;
+    } else if (event.code === 'KeyA') {
+      // Tell Pacman to go left
+      player2.directionX = -1;
+      player2.directionY = 0;
+      player2.element.classList = 'player direction-left';
+    } else if (event.code === 'KeyD') {
+      // Tell Pacman to go right
+      player2.directionX = 1;
+      player2.directionY = 0;
+      player2.element.classList = 'player direction-right';
+    } else if (event.code === 'KeyW') {
+      // Tell Pacman to go up
+      player2.directionY = -1;
+      player2.directionX = 0;
+      player2.element.classList = 'player direction-up';
+    } else if (event.code === 'KeyS') {
+      // Tell Pacman to go down
+      player2.directionY = 1;
+      player2.directionX = 0;
+      player2.element.classList = 'player direction-down';
     }
   }, true);
 
