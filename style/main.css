@@ -1,0 +1,57 @@
+html, 
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 0;
+    overflow:hidden;
+    font-size:11px;
+}
+.retro-bg{ 
+    background-repeat:no-repeat;
+    background-color:black;
+    background-size:1000px auto;
+    background-image:url('http://efekt-dieta.info/cdn/images/pacman-background/pacman-background-11.jpg');
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    border: 0;
+}
+#pacman{
+    position: absolute;
+    left: 0;
+    right: 40px;
+    top: 110px;
+    height:3rem;
+    width:3rem;
+    margin: auto;
+}
+.direction-left{
+    -ms-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg); 
+}
+.direction-right{
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.direction-up{
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.direction-down{
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+#pink-ghost{
+    left: 40px;
+    top: 40px;
+    position: absolute;
+}
