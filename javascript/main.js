@@ -1,4 +1,6 @@
 (function(root) {
+  // const is same as var but is unchangeable
+  // (you can only assign to it once)
   const Character = root.Character;
 
   function mainLoop() {
