@@ -12,6 +12,14 @@
       this.directionX = 0;
       this.directionY = 0;
     }
+
+    move() {
+      this.x += this.directionX;
+      this.y += this.directionY;
+
+      this.element.style.left = this.x + 'px';
+      this.element.style.top = this.y + 'px';
+    }
   }
 
   root.Character = Character;
