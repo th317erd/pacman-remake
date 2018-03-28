@@ -1,21 +1,21 @@
 // Anonymous function to avoid pollution of the global scope
-(function(){ 
+// single root "argument" that will store all variables
+(function(root){ 
 
     // ANIMATION LOOP
     function mainLoop() {
+        // access window object
+        // access windows propery by key: Request animaiton frame
+        // function(value)
+        // mainLoop is an argument being passed
         window.requestAnimationFrame(mainLoop);
-        
-        // 
+
+        // defining a for loop
+        // for loop (intailzier; conditional; incrimentor)
+        // creating index as 0, aslong as less than 0, incrimate 1
         for (var index = 0; index < players.length; index++){
             var player = players[index];
-            
-            // 
-            player.x += player.directionX;
-            player.y += player.directionY;
-            
-            // 
-            player.element.style.left = player.x + 'px';
-            player.element.style.top = player.y + 'px';
+            player.move();
         }
     }
 
@@ -25,75 +25,23 @@
         players = [];
 
     for (var amount = 0; amount < 10; amount++){
-
-        // create pacman "player"
-        var pacmanElement = document.createElement('img');
-            pacmanElement.setAttribute('src', 'assets/images/pacman.svg');
-            pacmanElement.classList = 'pacman';
-            document.body.appendChild(pacmanElement);
         
         // define player objects
-        players.push({ 
-            element: pacmanElement,  
-            x: windowWidth * Math.random(),
-            y: windowHeight * Math.random(),
-            directionX: 0,
-            directionY: 0
-        });
+        // stores player properties
+        players.push( 
+
+            // create character giving it arguments, pushing it into array
+            // passing these arguments through the constructor
+            new root.Player(
+                windowWidth * Math.random(),
+                windowHeight * Math.random(),
+            )
+        );
     }
-
-    // KEYBOARD EVENT LISTENERS
-    document.addEventListener('keydown', (event) => {
-        
-        var player1 = players[0];
-        var player2 = players[1];
-
-        //pacman1
-        if (event.code === 'Space'){
-            player1.directionX = 0;
-            player1.directionY = 0;
-        } else if (event.code === 'ArrowLeft'){
-            player1.directionX = -1;
-            player1.directionY = 0;
-            player1.element.classList = 'pacman direction-left';
-        } else if (event.code === 'ArrowRight'){
-            player1.directionX = +1;
-            player1.directionY = 0;
-            player1.element.classList = 'pacman direction-right';
-        } else if (event.code === 'ArrowUp'){
-            player1.directionY = -1;
-            player1.directionX = 0;
-            player1.element.classList = 'pacman direction-up';
-        } else if (event.code === 'ArrowDown'){
-            player1.directionY = +1;
-            player1.directionX = 0;
-            player1.element.classList = 'pacman direction-down';
-        }
-
-         //pacman2
-         if (event.code === 'KeyQ'){
-            player2.directionX = 0;
-            player2.directionY = 0;
-        } else if (event.code === 'KeyA'){
-            player2.directionX = -1;
-            player2.directionY = 0;
-            player2.element.classList = 'pacman direction-left';
-        } else if (event.code === 'KeyD'){
-            player2.directionX = +1;
-            player2.directionY = 0;
-            player2.element.classList = 'pacman direction-right';
-        } else if (event.code === 'KeyW'){
-            player2.directionY = -1;
-            player2.directionX = 0;
-            player2.element.classList = 'pacman direction-up';
-        } else if (event.code === 'KeyS'){
-            player2.directionY = +1;
-            player2.directionX = 0;
-            player2.element.classList = 'pacman direction-down';
-        }
-
-    }, true)
 
     window.requestAnimationFrame(mainLoop);
 
-})();
+
+// does window have a "root" key/object, if so use that key, if not create it and assing an empty objcet. pass object to "root" scope
+// enables you to use objects across differnt files
+})((window.root) ? window.root : (window.root = {}));
