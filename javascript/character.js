@@ -1,10 +1,10 @@
-(function(root){
+(function(root) {
     // "class" is like "object" but they store functions and constructors
     
     class Character {
         // constructor is a s special function - called whenever a class is called
         // pass these values into constructor
-        constructor(x, y, imageSource){
+        constructor(x, y, imageSource) {
             
             var characterElement = document.createElement('img');
             var image = (imageSource) ? imageSource : 'assets/images/ghost-up.svg';
@@ -21,7 +21,7 @@
             this.directionY = 0;   
 
         }
-        move(){
+        move() {
                 
             //player object (access) "x" 
             this.x += this.directionX;

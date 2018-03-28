@@ -13,7 +13,7 @@
         // defining a for loop
         // for loop (intailzier; conditional; incrimentor)
         // creating index as 0, aslong as less than 0, incrimate 1
-        for (var index = 0; index < players.length; index++){
+        for (var index = 0; index < players.length; index++) {
             var player = players[index];
             player.move();
         }
@@ -24,7 +24,7 @@
         windowHeight = window.innerHeight,
         players = [];
 
-    for (var amount = 0; amount < 10; amount++){
+    for (var amount = 0; amount < 10; amount++) {
         
         // define player objects
         // stores player properties
