@@ -2,7 +2,9 @@
   class Character {
     constructor(x, y, imageSource) {
       var characterElement = document.createElement('img');
-      characterElement.setAttribute('src', imageSource);
+      var image = (imageSource) ? imageSource : 'assets/images/ghost-up.svg';
+
+      characterElement.setAttribute('src', image);
       characterElement.classList = 'character';
       document.body.appendChild(characterElement);
 
