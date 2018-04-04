@@ -1,7 +1,7 @@
 (function(root) {
   class Game extends root.Context {
     constructor() {
-      super();
+      super(); // call parent class
 
       // GAME VARIABLES
       for (var amount = 0; amount < 10; amount++) {

@@ -34,9 +34,10 @@
       element.classList = 'character';
       document.body.appendChild(element);
     }
-    // Remove form DOM
+    // Remove from DOM
     unmount() {
       document.body.removeChild(this.element);
+      this.element = null;
     }
 
     // Empty stub function to allow child classes to add
@@ -48,7 +49,7 @@
     updateState(newState) {
       this.state = newState;
     }
-
+    // "...args" collect remaing arguemnt into an array, must be last
     addClasses(...args) {
       // Locally reference our instance variable for easier access / ease of use / caching
       var classList = this.classList;
@@ -59,7 +60,8 @@
 
         // Don't add to the class list if it is already in the list
         if (classList.indexOf(className) >= 0)
-          continue;
+        // skip back to the top of the loop and ignore the code below
+            continue;
 
         // Add class to list
         classList.push(className);

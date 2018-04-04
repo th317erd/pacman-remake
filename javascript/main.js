@@ -3,6 +3,7 @@
 (function(root) {
   var mode = 'game';
 
+  
   if (mode === 'editor') {
     var editor = new root.Editor();
     editor.start();
