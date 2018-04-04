@@ -1,3 +1,8 @@
+// GET THE STATE
+// GET THE ACTORS
+// GET THE WINDOW WIDTH
+// GET WINDOW HEIGHT
+
 (function(root) {
   class Context {
     constructor() {
@@ -48,16 +53,18 @@
       // Free references (also will end up freeing memory)
       for (var i = 0, il = actors.length; i < il; i++) {
         var actor = actors[i];
+       //Remove actor from DOM
         actor.unmount();
       }
-
+      // frees memory, clears array, prevents memory leak
       this.actors = [];
       this.state = 0x00;
     }
 
     addActor(actor) {
-      actor.mount();
       this.actors.push(actor);
+      //Add actor to DOM
+      actor.mount();
     }
   }
 

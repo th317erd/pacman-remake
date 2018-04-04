@@ -5,7 +5,7 @@
     // constructor is a s special function - called whenever a class is called
     // pass these values into constructor
     constructor(x, y, imageSource) {
-      // give constructor these properties
+      // give constructor these properties(varibles)
       this.imageSource = imageSource;
       this.element = null;
       this.x = x;
@@ -25,7 +25,7 @@
       this.element.style.left = this.x + 'px';
       this.element.style.top = this.y + 'px';
     }
-
+    // Add to the DOM
     mount() {
       var imageSource = (this.imageSource) ? this.imageSource : 'assets/images/ghost-up.svg',
           element = this.element = document.createElement('img');
@@ -34,7 +34,7 @@
       element.classList = 'character';
       document.body.appendChild(element);
     }
-
+    // Remove form DOM
     unmount() {
       document.body.removeChild(this.element);
     }
