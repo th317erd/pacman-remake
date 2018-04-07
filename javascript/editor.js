@@ -7,7 +7,11 @@
       // Second bit = lower right corner set
       // Third bit = lower left corner set
       // Forth bit = upper left corner set
+      
+      this.sizeX = 15;
+      this.sizeY = 15;
 
+      for (var y = 0, yl = this.SizeY; y < yl; y++){}
 
     }
   }
