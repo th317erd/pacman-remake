@@ -19,6 +19,12 @@ html, body {
   border: 0;
 }
 
+.block {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+}
+
 .character {
   width: 3rem;
   height: 3rem;

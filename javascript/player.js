@@ -23,7 +23,7 @@
           this.directionX = 0;
           this.directionY = 0;
         } else if (event.code === 'ArrowLeft') {
-          this.directionX = -1;
+          this.directionX = -0.01;
           this.directionY = 0;
 
           //Remove all direction classes
@@ -33,17 +33,17 @@
           this.addClasses('direction-left');
 
         } else if (event.code === 'ArrowRight') {
-          this.directionX = +1;
+          this.directionX = 0.01;
           this.directionY = 0;
           this.resetDirection();
           this.addClasses('direction-right');
         } else if (event.code === 'ArrowUp') {
-          this.directionY = -1;
+          this.directionY = -0.01;
           this.directionX = 0;
           this.resetDirection();
           this.addClasses('direction-up');
         } else if (event.code === 'ArrowDown') {
-          this.directionY = +1;
+          this.directionY = 0.01;
           this.directionX = 0;
           this.resetDirection();
           this.addClasses('direction-down');

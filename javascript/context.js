@@ -61,10 +61,34 @@
       this.state = 0x00;
     }
 
-    addActor(actor) {
-      this.actors.push(actor);
-      //Add actor to DOM
-      actor.mount();
+    addActors(..._newActors) {
+      var actors = [],
+          newActors = [].concat(..._newActors);
+
+      for (var i = 0, il = newActors.length; i < il; i++) {
+        var actor = newActors[i];
+
+        //Add actor to DOM
+        actor.mount();
+        actors.push(actor);
+      }
+    }
+
+    removeActors(..._removeActors) {
+      var newActors = [],
+          actors = this.actors,
+          removeActors = [].concat(..._removeActors);
+
+      for (var i = 0, il = actors.length; i < il; i++) {
+        var thisActor = actors[i];
+        if (removeActors.indexOf(thisActor) < 0) {
+          newActors.push(thisActor);
+        } else {
+          thisActor.unmount();
+        }
+      }
+
+      this.actors = newActors;
     }
   }
 
