@@ -7,6 +7,9 @@
       // Second bit = lower right corner set
       // Third bit = lower left corner set
       // Forth bit = upper left corner set
+      
+      this.sizeX = 15;
+      this.sizeY = 15;
 
       var gridSizeX = this.gridSizeX = 15,
           gridSizeY = this.gridSizeY = 15,
