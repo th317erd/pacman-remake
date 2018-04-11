@@ -1,7 +1,9 @@
 (function(root) {
   class Editor extends root.Context {
     constructor() {
-      super();
+      super({
+        editor: true
+      });
       // Block index bits
       // First bit = upper right corner set
       // Second bit = lower right corner set
@@ -19,13 +21,18 @@
 
       for (var y = 0, yl = gridSizeY; y < yl; y++) {
         for (var x = 0, xl = gridSizeX; x < xl; x++) {
-          tiles[y * gridSizeX + x] = new root.Actor(
-            x * tileSizeX,
-            y * tileSizeY,
-            'assets/images/map-tiles/1.svg'
-          );
+          var actor = tiles[y * gridSizeX + x] = new root.Actor({
+            x: x * tileSizeX,
+            y: y * tileSizeY,
+            imageSource: 'assets/images/map-tiles/15.svg',
+            editor: true
+          });
         }
       }
+
+      window.addEventListener('mousemove', (event) => {
+        console.log('Mouse Move', event);
+      }, false);
 
       this.updateDOM();
     }

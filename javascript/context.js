@@ -5,12 +5,13 @@
 
 (function(root) {
   class Context {
-    constructor() {
-      this.state = 0;
-      this.actors = [];
-
-      this.windowWidth = window.innerWidth;
-      this.windowHeight = window.innerHeight;
+    constructor(_opts) {
+      Object.assign(this, {
+        state: 0,
+        actors: [],
+        windowWidth: window.innerWidth / 10,
+        windowHeight: window.innerHeight / 10
+      }, _opts || {});
     }
 
     // ANIMATION LOOP
@@ -62,7 +63,7 @@
     }
 
     addActors(..._newActors) {
-      var actors = [],
+      var actors = this.actors,
           newActors = [].concat(..._newActors);
 
       for (var i = 0, il = newActors.length; i < il; i++) {
