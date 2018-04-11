@@ -2,6 +2,8 @@
   class Block extends root.Actor {
     constructor(...args) {
       super(...args);
+
+      this.classList.push('block');
     }
 
     mount(...args) {
