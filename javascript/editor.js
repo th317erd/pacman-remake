@@ -24,7 +24,8 @@
           var actor = tiles[y * gridSizeX + x] = new root.Block({
             x: x * tileSizeX,
             y: y * tileSizeY,
-            imageSource: 'assets/images/map-tiles/15.svg'
+            imageSource: 'assets/images/map-tiles/15.svg',
+            imageIndex: 15
           });
         }
       }
@@ -68,22 +69,6 @@
         if (blockIndex < 0)
           return;
 
-        console.log("OUR BLOCK INDEX IS: ", blockIndex);
-        //????.updateImageIndex(?????);
-        // var l = this.tiles.length,
-        //     topNeighborIndex = (blockIndex < this.gridSizeX)
-        //       ? (l - (this.gridSizeX - (blockIndex % this.gridSizeX)))
-        //       : blockIndex - this.gridSizeX,
-        //     bottomNeighborIndex = (blockIndex >= (l - this.gridSizeX))
-        //       ? (blockIndex % this.gridSizeX)
-        //       : blockIndex + this.gridSizeX,
-        //     leftNeighbor = (blockIndex - 1)
-        //     topNeighbor = this.tiles[topNeighborIndex],
-        //     bottomNeighbor = this.tiles[bottomNeighborIndex];
-
-        // topNeighbor.updateImageIndex(15);
-        // bottomNeighbor.updateImageIndex(15);
-
         var coords = this.indexToCoordinates(blockIndex),
             neighbors = [
               [ -1, -1, 2 ],
@@ -110,10 +95,13 @@
               bitmask = info.bitmask,
               neighborActor = this.tiles[index];
 
-          neighborActor.orImageIndex(bitmask);
+          if (!event.ctrlKey)
+            neighborActor.andImageIndex(~bitmask);
+          else
+            neighborActor.orImageIndex(bitmask);
         });
 
-        actor.updateImageIndex(15);
+        actor.updateImageIndex((!event.ctrlKey) ? 0 : 15);
       }
     }
 

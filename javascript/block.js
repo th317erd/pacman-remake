@@ -4,11 +4,11 @@
       super(...args);
 
       this.classList.push('block');
-      this.updateImageIndex(0);
+      this.updateImageIndex(this.imageIndex);
     }
 
     updateImageIndex(index) {
-      this.imageIndex = index;
+      this.imageIndex = index || 0;
       this.imageSource = 'assets/images/map-tiles/' + index + '.svg';
 
       if (this.element)
@@ -17,6 +17,10 @@
 
     orImageIndex(bitmask) {
       this.updateImageIndex(this.imageIndex | bitmask);
+    }
+
+    andImageIndex(bitmask) {
+      this.updateImageIndex(this.imageIndex & bitmask);
     }
 
     mount(...args) {
