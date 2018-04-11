@@ -21,14 +21,16 @@
 
       element.setAttribute('src', imageSource);
       element.setAttribute('draggable', false);
-      element.classList = 'character';
+      element.classList = this.classList.join(' ');
       element.style.left = this.x + 'rem';
       element.style.top = this.y + 'rem';
+      element._actor = this;
       document.body.appendChild(element);
     }
 
     // Remove from DOM
     unmount() {
+      element._actor = undefined;
       document.body.removeChild(this.element);
       this.element = null;
     }
@@ -39,6 +41,10 @@
 
     updateState(newState) {
       this.state = newState;
+    }
+
+    hasClass(klass) {
+      return (this.classList.indexOf(klass) >= 0);
     }
 
     // "...args" collect remaing arguemnt into an array, must be last
