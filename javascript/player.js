@@ -8,10 +8,12 @@
     // pass these values into constructor
     // needs matching arguments
     // ...args pass all argments through that function
-    constructor(x, y) {
+    constructor(_opts) {
       // "super" overload by making a function with the same name
       // tells it to go to the parent constructor (character)
-      super(x, y, 'assets/images/pacman.svg');
+      super(Object.assign({
+        imageSource: 'assets/images/pacman.svg'
+      }, _opts || {}));
 
       // Add our player class
       this.addClasses('player');
