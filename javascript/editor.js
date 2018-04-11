@@ -9,7 +9,7 @@
       // Second bit = lower right corner set
       // Third bit = lower left corner set
       // Forth bit = upper left corner set
-      
+
       this.sizeX = 15;
       this.sizeY = 15;
 
@@ -21,7 +21,7 @@
 
       for (var y = 0, yl = gridSizeY; y < yl; y++) {
         for (var x = 0, xl = gridSizeX; x < xl; x++) {
-          var actor = tiles[y * gridSizeX + x] = new root.Actor({
+          var actor = tiles[y * gridSizeX + x] = new root.Block({
             x: x * tileSizeX,
             y: y * tileSizeY,
             imageSource: 'assets/images/map-tiles/15.svg',
