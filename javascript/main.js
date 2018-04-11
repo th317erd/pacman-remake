@@ -1,7 +1,7 @@
 // Anonymous function to avoid pollution of the global scope
 // single root "argument" that will store all variables
 (function(root) {
-  var mode = 'editor';
+  var mode = 'game';
 
 
   if (mode === 'editor') {

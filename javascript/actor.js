@@ -1,13 +1,17 @@
 (function(root) {
   class Actor {
-    constructor(x, y, imageSource) {
-      // give constructor these properties(varibles)
-      this.imageSource = imageSource;
-      this.element = null;
-      this.x = x;
-      this.y = y;
-      this.state = 0;
-      this.classList = [];
+    constructor(_opts) {
+      var opts = _opts || {};
+
+      // Merge option properties into this instance object
+      Object.assign(this, {
+        imageSource: null,
+        element: null,
+        x: 0,
+        y: 0,
+        state: 0,
+        classList: []
+      }, opts || {});
     }
 
     // Add to the DOM
@@ -16,6 +20,7 @@
           element = this.element = document.createElement('img');
 
       element.setAttribute('src', imageSource);
+      element.setAttribute('draggable', false);
       element.classList = 'character';
       element.style.left = this.x + 'rem';
       element.style.top = this.y + 'rem';
