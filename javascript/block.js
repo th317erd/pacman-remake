@@ -18,7 +18,7 @@
     orImageIndex(bitmask) {
       this.updateImageIndex(this.imageIndex | bitmask);
     }
-
+ 
     andImageIndex(bitmask) {
       this.updateImageIndex(this.imageIndex & bitmask);
     }
